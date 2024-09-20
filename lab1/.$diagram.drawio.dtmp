@@ -1,0 +1,156 @@
+<mxfile host="Electron" modified="2024-09-20T08:08:41.328Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.4.13 Chrome/124.0.6367.207 Electron/30.0.6 Safari/537.36" etag="prZH7DFiTM3HbrV9iCaZ" version="24.4.13" type="device">
+  <diagram name="Страница — 1" id="pphEKaw6OGg2zeK0ku8d">
+    <mxGraphModel dx="1393" dy="1778" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="NeMu-LNquF-UA0B_v634-1" value="Product" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-280" y="260" width="160" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="NeMu-LNquF-UA0B_v634-2" value="+id&lt;br&gt;+name&lt;br&gt;+description&lt;div&gt;+price&lt;/div&gt;&lt;div&gt;+category_id&lt;/div&gt;&lt;div&gt;+stock&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" parent="NeMu-LNquF-UA0B_v634-1" vertex="1">
+          <mxGeometry y="50" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="NeMu-LNquF-UA0B_v634-3" value="User" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-40" y="40" width="160" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="NeMu-LNquF-UA0B_v634-4" value="+id&lt;br&gt;+name&lt;br&gt;+email&lt;div&gt;+password&lt;/div&gt;&lt;div&gt;+address&lt;/div&gt;&lt;div&gt;+profile_id&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" parent="NeMu-LNquF-UA0B_v634-3" vertex="1">
+          <mxGeometry y="50" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="NeMu-LNquF-UA0B_v634-5" value="Profile" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-40" y="-150" width="160" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="NeMu-LNquF-UA0B_v634-6" value="+id&lt;br&gt;+phone_number&lt;br&gt;+birth_date" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" parent="NeMu-LNquF-UA0B_v634-5" vertex="1">
+          <mxGeometry y="50" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NeMu-LNquF-UA0B_v634-7" value="Category" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-40" y="310" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="NeMu-LNquF-UA0B_v634-8" value="+id&lt;br&gt;+name&lt;div&gt;&lt;br/&gt;&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" parent="NeMu-LNquF-UA0B_v634-7" vertex="1">
+          <mxGeometry y="50" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="NeMu-LNquF-UA0B_v634-9" value="Order" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="220" y="40" width="160" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="NeMu-LNquF-UA0B_v634-10" value="+id&lt;br&gt;+user_id&lt;br&gt;+order_date&lt;div&gt;+status&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" parent="NeMu-LNquF-UA0B_v634-9" vertex="1">
+          <mxGeometry y="50" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="NeMu-LNquF-UA0B_v634-11" value="Cart" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-510" y="-140" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="NeMu-LNquF-UA0B_v634-12" value="+id&lt;br&gt;+user_id" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" parent="NeMu-LNquF-UA0B_v634-11" vertex="1">
+          <mxGeometry y="50" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="NeMu-LNquF-UA0B_v634-13" value="Review" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-280" y="40" width="160" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="NeMu-LNquF-UA0B_v634-14" value="+id&lt;br&gt;+user_id&lt;br&gt;+product_id&lt;div&gt;+rating&lt;/div&gt;&lt;div&gt;+comment&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" parent="NeMu-LNquF-UA0B_v634-13" vertex="1">
+          <mxGeometry y="50" width="160" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="NeMu-LNquF-UA0B_v634-17" value="Supplier" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-520" y="275" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="NeMu-LNquF-UA0B_v634-18" value="+id&lt;br&gt;+name&lt;br&gt;+contact_info" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" parent="NeMu-LNquF-UA0B_v634-17" vertex="1">
+          <mxGeometry y="50" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="NeMu-LNquF-UA0B_v634-19" value="Auditlog" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="240" y="320" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="NeMu-LNquF-UA0B_v634-20" value="+id&lt;br&gt;+user_id&lt;br&gt;+action&lt;div&gt;+timestamp&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" parent="NeMu-LNquF-UA0B_v634-19" vertex="1">
+          <mxGeometry y="50" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="NeMu-LNquF-UA0B_v634-21" value="Payment" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="240" y="-150" width="160" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="NeMu-LNquF-UA0B_v634-22" value="+id&lt;br&gt;+order_id&lt;br&gt;+payment_status" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" parent="NeMu-LNquF-UA0B_v634-21" vertex="1">
+          <mxGeometry y="50" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NeMu-LNquF-UA0B_v634-28" value="" style="fontSize=12;html=1;endArrow=ERoneToMany;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="120" y="130" as="sourcePoint" />
+            <mxPoint x="220" y="130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NeMu-LNquF-UA0B_v634-32" value="" style="fontSize=12;html=1;endArrow=ERoneToMany;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="-40" y="150" as="sourcePoint" />
+            <mxPoint x="-120" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NeMu-LNquF-UA0B_v634-34" value="" style="fontSize=12;html=1;endArrow=ERoneToMany;rounded=0;entryX=0.626;entryY=1.026;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.626;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="NeMu-LNquF-UA0B_v634-1" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="-180" y="257.66" as="sourcePoint" />
+            <mxPoint x="-179.84000000000003" y="179.99999999999997" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-180" y="207.66" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NeMu-LNquF-UA0B_v634-35" value="" style="fontSize=12;html=1;endArrow=ERoneToMany;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="-360" y="335" as="sourcePoint" />
+            <mxPoint x="-280" y="334.69" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NeMu-LNquF-UA0B_v634-36" value="" style="edgeStyle=orthogonalEdgeStyle;fontSize=12;html=1;endArrow=ERmany;startArrow=ERmany;rounded=0;entryX=0.315;entryY=1.005;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="NeMu-LNquF-UA0B_v634-10" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="-120" y="290" as="sourcePoint" />
+            <mxPoint x="270" y="200" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-120" y="290" />
+              <mxPoint x="270" y="290" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NeMu-LNquF-UA0B_v634-38" value="" style="fontSize=12;html=1;endArrow=ERmandOne;startArrow=ERmandOne;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="39.55" y="40" as="sourcePoint" />
+            <mxPoint x="39.55" y="-40" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NeMu-LNquF-UA0B_v634-39" value="" style="fontSize=12;html=1;endArrow=ERmandOne;startArrow=ERmandOne;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="319.55" y="40" as="sourcePoint" />
+            <mxPoint x="319.55" y="-40" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NeMu-LNquF-UA0B_v634-40" value="" style="fontSize=12;html=1;endArrow=ERoneToMany;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="-40" y="370" as="sourcePoint" />
+            <mxPoint x="-120" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NeMu-LNquF-UA0B_v634-44" value="" style="edgeStyle=orthogonalEdgeStyle;fontSize=12;html=1;endArrow=ERmandOne;startArrow=ERmandOne;rounded=0;entryX=0;entryY=0.083;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="NeMu-LNquF-UA0B_v634-4" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="-350" y="-70" as="sourcePoint" />
+            <mxPoint x="-50" y="70" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-69" y="-70" />
+              <mxPoint x="-69" y="100" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NeMu-LNquF-UA0B_v634-45" value="" style="edgeStyle=orthogonalEdgeStyle;fontSize=12;html=1;endArrow=ERmany;startArrow=ERmany;rounded=0;exitX=0.433;exitY=1.008;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.267;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="NeMu-LNquF-UA0B_v634-12" target="NeMu-LNquF-UA0B_v634-1" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="-440" y="-10" as="sourcePoint" />
+            <mxPoint x="-300" y="270" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-441" y="170" />
+              <mxPoint x="-320" y="170" />
+              <mxPoint x="-320" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NeMu-LNquF-UA0B_v634-46" value="" style="edgeStyle=orthogonalEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;rounded=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" parent="1" target="NeMu-LNquF-UA0B_v634-4" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="240" y="400" as="sourcePoint" />
+            <mxPoint x="130" y="200" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="191" y="400" />
+              <mxPoint x="191" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
