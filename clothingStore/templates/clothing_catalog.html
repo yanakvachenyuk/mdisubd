@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+
+{% block title %}Каталог товаров{% endblock title %}
+{% block header %}Каталог товаров{% endblock header %}
+
+{% block content %}
+    <style>
+        .catalog-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .product-card {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: 300px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card h3 {
+            margin: 0;
+            font-size: 1.25rem;
+            color: #333;
+        }
+
+        .product-card p {
+            margin: 5px 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .product-card .price {
+            font-size: 1.2rem;
+            color: #007b00;
+            font-weight: bold;
+        }
+
+        .product-card .price del {
+            color: #999;
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+
+        .product-card small {
+            color: #888;
+            font-size: 0.8rem;
+        }
+
+        .product-card .actions {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .product-card button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .product-card button:hover {
+            background-color: #0056b3;
+        }
+
+        .product-card a {
+            text-align: center;
+            text-decoration: none;
+            color: #007bff;
+            font-size: 0.9rem;
+        }
+
+        .product-card a:hover {
+            text-decoration: underline;
+        }
+
+        .filter-form {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .filter-form select,
+        .filter-form input,
+        .filter-form button {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .filter-form button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        .filter-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+
+    <form method="get" action="{% url 'clothing_catalog' %}" class="filter-form">
+        <label for="category">Фильтр по категории:</label>
+        <select name="category" id="category">
+            <option value="">Все категории</option>
+            {% for category in categories %}
+                <option value="{{ category }}" {% if category == selected_category %}selected{% endif %}>
+                    {{ category }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <label for="search">Поиск:</label>
+        <input type="text" name="search" id="search" placeholder="Поиск" value="{{ search_query }}">
+
+        <button type="submit">Применить</button>
+    </form>
+
+    <div class="catalog-container">
+        {% for product in products %}
+        <div class="product-card">
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description|truncatewords:20 }}</p>
+            <p>Категория: {{ product.category|default:"Нет категории" }}</p>
+            <p>Поставщик: {{ product.supplier|default:"Нет поставщика" }}</p>
+            <p>В наличии: {{ product.stock }}</p>
+            <p class="price">
+                {% if product.discount %}
+                    <del>{{ product.price }} byn</del>
+                    {{ product.discount.final_price }} byn
+                {% else %}
+                    {{ product.price }} byn
+                {% endif %}
+            </p>
+            {% if product.discount %}
+                <small>Скидка: {{ product.discount.amount }}% (с {{ product.discount.start_date }} по {{ product.discount.end_date }})</small>
+            {% endif %}
+            <div class="actions">
+                <form method="POST" action="{% if is_authenticated %}{% url 'add_to_cart' %}{% else %}{% url 'login' %}{% endif %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="product_id" value="{{ product.id }}">
+                    <button type="submit">Добавить в корзину</button>
+                </form>
+                <a href="{% url 'product_reviews' product.id %}">Отзывы</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

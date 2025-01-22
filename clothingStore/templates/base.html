@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Магазин одежды{% endblock title %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .main-header {
+            background-color: #0c0101;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .main-header nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .main-header nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            margin: 0 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s, color 0.3s;
+            border-radius: 5px;
+        }
+
+        .main-header nav a:hover {
+            background-color: #ffffff;
+            color: #030000;
+        }
+        .main-header nav a.active {
+        background-color: #ffffff; /* Белый фон */
+        color: #030000; /* Черный текст */
+       
+        
+}
+
+
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <nav>
+    <a href="{% url 'clothing_catalog' %}" class="{% if request.resolver_match.url_name == 'clothing_catalog' %}active{% endif %}">Каталог</a>
+    {% if is_authenticated %}
+        {% if request.session.is_superuser %}
+            <a href="{% url 'admin_manage_products' %}" class="{% if request.resolver_match.url_name == 'admin_manage_products' %}active{% endif %}">Управление продуктами</a>
+            <a href="{% url 'admin_manage_categories' %}" class="{% if request.resolver_match.url_name == 'admin_manage_categories' %}active{% endif %}">Управление категориями</a>
+            <a href="{% url 'admin_manage_suppliers' %}" class="{% if request.resolver_match.url_name == 'admin_manage_suppliers' %}active{% endif %}">Управление поставщиками</a>
+            <a href="{% url 'admin_manage_discounts' %}" class="{% if request.resolver_match.url_name == 'admin_manage_discounts' %}active{% endif %}">Управление скидками</a>
+            <a href="{% url 'audit_logs' %}" class="{% if request.resolver_match.url_name == 'audit_logs' %}active{% endif %}">Журнал действий</a>
+        {% endif %}
+        <a href="{% url 'cart' %}" class="{% if request.resolver_match.url_name == 'cart' %}active{% endif %}">Корзина</a>
+        <a href="{% url 'order_history' %}" class="{% if request.resolver_match.url_name == 'order_history' %}active{% endif %}">История заказов</a>
+        <a href="{% url 'logout' %}">Выход</a>
+    {% else %}
+        <a href="{% url 'login' %}" class="{% if request.resolver_match.url_name == 'login' %}active{% endif %}">Корзина</a>
+        <a href="{% url 'login' %}" class="{% if request.resolver_match.url_name == 'login' %}active{% endif %}">История заказов</a>
+        <a href="{% url 'login' %}" class="{% if request.resolver_match.url_name == 'login' %}active{% endif %}">Вход</a>
+        <a href="{% url 'register' %}" class="{% if request.resolver_match.url_name == 'register' %}active{% endif %}">Регистрация</a>
+    {% endif %}
+</nav>
+
+    </header>
+
+    <main>
+        <h1>{% block header %}{% endblock header %}</h1>
+        {% block content %}{% endblock content %}
+    </main>
+</body>
+</html>

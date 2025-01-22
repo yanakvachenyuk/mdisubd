@@ -1,0 +1,207 @@
+{% extends "base.html" %}
+
+{% block title %}Управление скидками{% endblock title %}
+{% block header %}Управление скидками{% endblock header %}
+
+{% block content %}
+<style>
+    /* Основной стиль */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    h2, h3 {
+        color: #007bff;
+        margin-bottom: 20px;
+    }
+
+    form {
+        background-color: #fff;
+        border: none;
+        padding: 10px 0;
+        margin: 0;
+    }
+
+    label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 8px;
+        margin-left: 15px;
+    }
+
+    input[type="number"],
+    input[type="date"],
+    select {
+        width: 90%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+        box-sizing: border-box;
+        margin-left: 15px;
+        
+    }
+
+    input[type="number"]:focus,
+    input[type="date"]:focus,
+    select:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+
+    button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-size: 14px;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    table th,
+    table td {
+        padding: 12px 15px;
+        text-align: left;
+        border: 1px solid #ddd;
+        font-size: 14px;
+    }
+
+    table th {
+        background-color: #007bff;
+        color: #fff;
+        text-transform: uppercase;
+    }
+
+    /* Выравнивание и длина форм в таблицах */
+    .actions form {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .actions input[type="number"],
+    .actions select {
+        flex: 1;
+        margin: 0;
+    }
+
+    .actions button {
+        flex-shrink: 0;
+    }
+
+    /* Удаление лишних рамок у кнопок */
+    button:focus {
+        outline: none;
+    }
+</style>
+
+<div>
+    <h2>Добавить новую скидку</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="add">
+        <label>Товар:</label>
+        <select name="product" required>
+            {% for product in products %}
+                <option value="{{ product.id }}">{{ product.name }}</option>
+            {% endfor %}
+        </select>
+
+        <label>Сумма скидки (в %):</label>
+        <input type="number" name="discount_amount" step="0.01" min="0" max="100" required >
+
+        <label>Дата начала:</label>
+        <input type="date" name="start_date" required>
+
+        <label>Дата окончания:</label>
+        <input type="date" name="end_date" required>
+
+        <button type="submit">Добавить скидку</button>
+    </form>
+
+    <h2>Список скидок</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Товар</th>
+                <th>Скидка (%)</th>
+                <th>Дата начала</th>
+                <th>Дата окончания</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for discount in discounts %}
+                <tr>
+                    <td>{{ discount.id }}</td>
+                    <td>{{ discount.product_name }}</td>
+                    <td>{{ discount.discount_amount }}</td>
+                    <td>{{ discount.start_date }}</td>
+                    <td>{{ discount.end_date }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Действия</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Действие</th>
+                <th>Информация о скидке</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for discount in discounts %}
+                <tr>
+                    <td>
+                        <form method="POST" class="actions" style="display:inline;">
+                            {% csrf_token %}
+                            <input type="hidden" name="action" value="delete">
+                            <input type="hidden" name="discount_id" value="{{ discount.id }}">
+                            <button type="submit">Удалить</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form method="POST" class="actions" style="display:inline;">
+                            {% csrf_token %}
+                            <input type="hidden" name="action" value="edit">
+                            <input type="hidden" name="discount_id" value="{{ discount.id }}">
+                            <label>Скидка (%):</label>
+                            <input type="number" name="discount_amount" value="{{ discount.discount_amount }}" step="0.01" min="0" max="100" required>
+
+                            <label>Дата начала:</label>
+                            <input type="date" name="start_date" value="{{ discount.start_date }}" required>
+
+                            <label>Дата окончания:</label>
+                            <input type="date" name="end_date" value="{{ discount.end_date }}" required>
+
+                            <button type="submit">Редактировать</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block title %}Корзина{% endblock title %}
+{% block header %}Корзина{% endblock header %}
+
+{% block content %}
+<style>
+    .cart-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        font-family: Arial, sans-serif;
+    }
+
+    .cart-container table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    .cart-container th, .cart-container td {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #ddd;
+    }
+
+    .cart-container th {
+        background-color: #f0f0f0;
+        font-weight: bold;
+    }
+
+    .cart-container td button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+
+    .cart-container td button:hover {
+        background-color: #0056b3;
+    }
+
+    .cart-container td form {
+        display: inline-block;
+    }
+
+    .cart-container .empty-cart {
+        text-align: center;
+        color: #888;
+        font-style: italic;
+        padding: 20px;
+    }
+
+    .cart-container .checkout-button {
+        display: block;
+        width: 100%;
+        text-align: center;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 15px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border-radius: 8px;
+        text-transform: uppercase;
+        cursor: pointer;
+        margin-top: 20px;
+        text-decoration: none;
+    }
+
+    .cart-container .checkout-button:hover {
+        background-color: #218838;
+    }
+</style>
+
+<div class="cart-container">
+    <h2>Ваша корзина</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Цена</th>
+                <th>Количество</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product_id, name, price, quantity in cart_products %}
+                <tr>
+                    <td>{{ name }}</td>
+                    <td>{{ price }} ₽</td>
+                    <td>{{ quantity }}</td>
+                    <td>
+                        <form method="POST" action="{% url 'update_cart_item' product_id 'increase' %}">
+                            {% csrf_token %}
+                            <button type="submit">+</button>
+                        </form>
+                        <form method="POST" action="{% url 'update_cart_item' product_id 'decrease' %}">
+                            {% csrf_token %}
+                            <button type="submit">-</button>
+                        </form>
+                        <form method="POST" action="{% url 'remove_from_cart' product_id %}">
+                            {% csrf_token %}
+                            <button type="submit">Удалить</button>
+                        </form>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4" class="empty-cart">Ваша корзина пуста.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if cart_products %}
+        <form method="POST" action="{% url 'create_order' %}">
+            {% csrf_token %}
+            <button class="checkout-button" type="submit">Оформить заказ</button>
+        </form>
+    {% endif %}
+</div>
+{% endblock content %}

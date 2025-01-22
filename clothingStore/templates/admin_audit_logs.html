@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %}Логи действий{% endblock title %}
+{% block content %}
+<style>
+    /* Основной стиль */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        color: #007bff;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    /* Контейнер для таблицы */
+    .table-container {
+        width: 100%; /* Чтобы контейнер занимал всю ширину */
+        overflow-x: auto; /* Добавляет горизонтальную прокрутку при необходимости */
+        padding: 0;
+    }
+
+    table {
+        width: 100%; /* Убираем отступ слева */
+        border-collapse: collapse;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    table th,
+    table td {
+        padding: 12px 15px;
+        text-align: left;
+        border: 1px solid #ddd;
+        font-size: 14px;
+    }
+
+    table th {
+        background-color: #007bff;
+        color: #fff;
+        text-transform: uppercase;
+    }
+
+    table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    table tr:hover {
+        background-color: #e9f7fd;
+    }
+
+    table td {
+        font-size: 13px;
+    }
+
+    /* Сообщение для пустого лога */
+    .empty-message {
+        text-align: center;
+        font-size: 16px;
+        color: #777;
+        padding: 20px 0;
+    }
+</style>
+
+<h1>Логи действий</h1>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Пользователь</th>
+                <th>Действие</th>
+                <th>Время</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for log in logs %}
+            <tr>
+                <td>{{ log.0 }}</td>
+                <td>{{ log.1 }}</td>
+                <td>{{ log.2 }}</td>
+                <td>{{ log.3 }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4" class="empty-message">Нет записей в логах</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
